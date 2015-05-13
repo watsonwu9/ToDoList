@@ -2,6 +2,7 @@ var React = require('react-native');
 var styles = require('./styles');
 var TodoActions = require('../actions/TodoActions');
 var TodoStore = require('../stores/TodoStore');
+var TodoListItem = require('./TodoListItem');
 
 
 var {
@@ -11,43 +12,55 @@ var {
   View,
   ListView,
   TouchableHighlight,
+  AlertIOS,
 } = React;
 
 
-var MainContent = React.createClass({
-	getInitialState:function(){
-		var ds = new ListView.DataSource({rowHasChanged:(r1,r2) =>r1 !==r2});
-		return {
-			dataSource:ds.cloneWithRows(['row1','row2']),
-		};
+
+
+var TodoListContainer = React.createClass({
+
+	componentWillMount: function() {
+	    this.dataSource = new ListView.DataSource({
+	      rowHasChanged: (row1, row2) => row1 !== row2
+	    });
+	  },
+
+	_AlertMenu:function(rowData,rowID){
+		//AlertIOS.alert('you opened item No.'+rowID);
 	},
+
+	_openItem:function(rowData,rowID){
+		console.log(rowData);
+	},
+
 
 	_renderRow:function(rowData:string,sectionID:number,rowID:number){
 		return(
+			<TodoListItem 
+			 item = {rowData}
+			 onPress = {this._openItem(rowData,rowID)}
+			 onLongPress = {this._AlertMenu(rowData,rowID)} />
 			
-				<View style={styles.row}>
-					<Text style={styles.text}>
-						{rowData}
-					</Text>
-				</View>
 			);
 	},
 
 	_createItem:function(){
-		console.log("you create an item in MainContent");
 		TodoActions.createItem();
+
 
 
 
 	},
 
 	render:function(){
+		var dataSource = this.dataSource.cloneWithRows(this.props.todos)
 
 		return(
 		   <View>
 			 	<ListView 
 			 		style ={styles.listContainer}
-			 		dataSource ={this.state.dataSource}
+			 		dataSource ={dataSource}
 			 		renderRow ={this._renderRow}/>
 
 			 	<TouchableHighlight
@@ -59,6 +72,10 @@ var MainContent = React.createClass({
 			);
 
 	}
+
+
+
+
 });
 
-module.exports = MainContent;
+module.exports = TodoListContainer;

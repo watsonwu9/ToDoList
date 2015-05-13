@@ -14,21 +14,24 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var TodoConstants = require('../constants/TodoConstants');
 var EventEmitter = require('events').EventEmitter;
 var merge = require('react/lib/merge');
-
 var CHANGE_EVENT = "change";
+var _todos = [
+        {text: 'buy some milk', complete:false},
+        {text: 'watch a movie', complete:true}
+    ];
 
-var _todos = {};
+
+
+
 
 function _createItem(payload){
-  console.log('you want to create new item');
+    console.log('you want to create new item');
 
-  var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-  _todos[id] = {
-    id: id,
-    complete: false,
-    text: 'learn react native'
-  };
-
+  //   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+    _todos.push({
+      text: 'learn react native',
+      complete: false
+    });
 }
 
 
@@ -36,10 +39,12 @@ function _createItem(payload){
 var TodoStore = merge(EventEmitter.prototype,{
 
   emitChange:function(){
+  	console.log('emit send');
     this.emit(CHANGE_EVENT);
   },
 
   addChangeListener:function(callback){
+  	console.log('addChangeListener added');
     this.on(CHANGE_EVENT, callback);
   },
 
@@ -60,7 +65,11 @@ var TodoStore = merge(EventEmitter.prototype,{
 	    	return true;
 	  }
 	  TodoStore.emitChange();
-  })
+  }),
+
+  getAll:function(){
+  	return _todos;
+  }
 
 })
 
