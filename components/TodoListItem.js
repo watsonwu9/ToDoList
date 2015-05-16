@@ -13,12 +13,12 @@ var todoListItem = React.createClass({
 	  render: function() {
     var item = this.props.item;
     return (
-      <View>
+      <View style={styles.todoListItem}>
         <TouchableHighlight
           onPress={this.props.onPress}
           onLongPress={this.props.onLongPress}>
           <View>
-            <Text>
+            <Text style={styles.todoListItemText}>
               {item.text}
             </Text>
           </View>

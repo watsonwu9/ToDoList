@@ -10,8 +10,14 @@ var {
 
 var Footer = React.createClass({
 	render:function(){
+		console.log('render MainView');
 		return(
-			<Text style={styles.Welcome}>Welcome to Chongqing</Text>
+			<View style={styles.footer}>
+				<Text style={styles.footerText}>Powered By Yiqixie</Text>
+			</View>
+			
+			 
+			
 			);
 
 	}

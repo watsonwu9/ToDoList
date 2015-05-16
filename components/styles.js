@@ -5,56 +5,60 @@ var { StyleSheet } = React;
 
 var styles = StyleSheet.create({
  
-  container: {
-    marginTop:100,
-    flex: 1,
+  navigatorIOSWrapper:{
+    flex:1,
+  },
+
+  mainViewContainer:{
+    justifyContent:'space-between',
+    height:677,
+  },
+
+  
+  footer:{
+    backgroundColor:'#d3d8e3',
+    alignSelf:'center',
+    height:25,
+    width:375,
+
+  },
+
+  footerText:{
+    fontSize: 12,
+    textAlign:'center',
+  },
+  
+
+  todoListItem:{
+    backgroundColor:'#fafbfc',
+    height:60,
+    width:375,
+    borderColor:'#48BBEC',
+    borderWidth:3,
+    alignSelf: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
 
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 
-  listContainer:{
-     height:300,
+   todoListItemText:{
+    textAlign:'center',
+    fontSize:18,
+    fontFamily:'georgia',
+
    },
 
-  row: {
-  // flexDirection: 'row',
-  // justifyContent: 'center',
-  width:200,
-  padding: 10,
-  backgroundColor: '#F6F6F6',
-  },
-
-  separator: {
-    height: 1,
-    backgroundColor: '#CCCCCC',
-  },
-
-  thumb: {
-    width: 64,
-    height: 64,
-  },
-
    button: {
-    height: 36,
+    height: 35,
+    width:50,
     backgroundColor: '#48BBEC',
-    alignSelf: 'stretch',
-    justifyContent: 'center'
+    alignSelf: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    padding:10,
   },
 
    buttonText: {
-    fontSize: 18,
+    fontSize: 25,
     color: 'white',
     alignSelf: 'center'
   },

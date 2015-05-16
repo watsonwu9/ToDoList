@@ -3,6 +3,7 @@ var styles = require('./styles');
 var TodoActions = require('../actions/TodoActions');
 var TodoStore = require('../stores/TodoStore');
 var TodoListItem = require('./TodoListItem');
+var Footer =require('./Footer');
 
 
 var {
@@ -15,12 +16,29 @@ var {
   AlertIOS,
 } = React;
 
-
+function _getTodoState() {
+  return {
+    todos:TodoStore.getAll()
+  };
+};
 
 
 var TodoListContainer = React.createClass({
 
+	componentDidMount:function(){
+	  TodoStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount:function(){
+	  TodoStore.removeChangeListener(this._onChange);
+	},
+
+	getInitialState:function(){
+	  console.log("get getInitialState");
+	  return _getTodoState();
+	},
+
 	componentWillMount: function() {
+		console.log("will mount");
 	    this.dataSource = new ListView.DataSource({
 	      rowHasChanged: (row1, row2) => row1 !== row2
 	    });
@@ -38,6 +56,7 @@ var TodoListContainer = React.createClass({
 	_renderRow:function(rowData:string,sectionID:number,rowID:number){
 		return(
 			<TodoListItem 
+
 			 item = {rowData}
 			 onPress = {this._openItem(rowData,rowID)}
 			 onLongPress = {this._AlertMenu(rowData,rowID)} />
@@ -54,12 +73,14 @@ var TodoListContainer = React.createClass({
 	},
 
 	render:function(){
-		var dataSource = this.dataSource.cloneWithRows(this.props.todos)
-
+		var dataSource = this.dataSource.cloneWithRows(this.state.todos)
+		console.log("show me dataSource");
+		console.log(dataSource);
+		//contentContainerStyle={styles.listview}
 		return(
-		   <View>
+	    	<View style={styles.mainViewContainer}>
 			 	<ListView 
-			 		style ={styles.listContainer}
+			 		
 			 		dataSource ={dataSource}
 			 		renderRow ={this._renderRow}/>
 
@@ -68,10 +89,19 @@ var TodoListContainer = React.createClass({
 	          onPress={this._createItem}>
 	            <Text style={styles.buttonText}>+</Text>
 	            </TouchableHighlight>
+	    	 <Footer />
 	       </View>
+	       
 			);
 
-	}
+	},
+
+	  _onChange:function(){
+    console.log(this.state.todos);
+    console.log('_onChange called ');
+    this.setState(_getTodoState());
+    console.log(this.state.todos);
+  }
 
 
 
