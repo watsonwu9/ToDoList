@@ -26,10 +26,6 @@ function _getTodoState() {
 
 var TodoListContainer = React.createClass({
 
-	// _handleNextButtonPress:function(){
-	// 	this.props.navigator.pop();
-	// },
-
 	componentDidMount:function(){
 	  console.log('mainViewContainer did mount');
 	  TodoStore.addChangeListener(this._onChange);
@@ -50,39 +46,32 @@ var TodoListContainer = React.createClass({
 	    });
 	  },
 
-	_AlertMenu:function(rowData,rowID){
-		//AlertIOS.alert('you opened item No.'+rowID);
-		console.log('ou opened item No.'+rowID);
+	// _AlertMenu:function(rowData,rowID){
+	// 	//AlertIOS.alert('you opened item No.'+rowID);
+	// 	console.log('ou opened item No.'+rowID);
+	// },
+
+	_createItem:function(){
+		console.log("this.props");
+		this.props.navigator.push({
+	    title: "Property",
+	    component: Footer
+	    });
+          
 	},
 
-	_openItem:function(rowData,rowID){
-        // this.props.refs.mainNavigator.navigator.push({
-        // title: "Amend Event",
-        // component: ToEditItem,
-        // passProps: {item: rowData, id: rowID},
-        // rightButtonTitle: 'Cancel',
-        // onRightButtonPress: () => {this.props.refs.mainNavigator.navigator.pop(); }
-        // });
-		console.log(this.props);
-
-
-          
+	_Pressed:function(){
+		console.log("pressed !!!!!!!!!!!!!!");
 	},
 
 
 	_renderRow:function(rowData:string,sectionID:number,rowID:number){
-		//onLongPress = {this._AlertMenu(rowData,rowID)} />
+		console.log("the render row is "+this);
 		return(
 			<TodoListItem 
-			 item = {rowData}
-			 onPress = {this._openItem(rowData,rowID)}/>
-			 
+			 item = {rowData}/>		 
+			
 			);
-	},
-
-	_createItem:function(){
-		TodoActions.createItem();
-
 	},
 
 	render:function(){
@@ -93,7 +82,6 @@ var TodoListContainer = React.createClass({
 			 	<ListView 
 			 		dataSource ={dataSource}
 			 		renderRow ={this._renderRow}/>
-
 			 	<TouchableHighlight
 	          style={styles.button}
 	          onPress={this._createItem}>
@@ -106,6 +94,8 @@ var TodoListContainer = React.createClass({
 
 	},
 
+
+	//callback from the TodoStore
 	  _onChange:function(){
 
     this.setState(_getTodoState());

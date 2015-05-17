@@ -6,8 +6,13 @@ var { StyleSheet } = React;
 var styles = StyleSheet.create({
 
   trialText:{
-    fontSize:20,
+    fontSize:120,
   },
+
+  inputText:{
+    fontSize:40,
+  },
+
 
   textInput:{
     marginTop:160,

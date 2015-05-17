@@ -38,6 +38,9 @@ var ToDoList = React.createClass({
  
   render: function() {
     console.log('index render');
+    // rightButtonTitle: 'Cancel',
+    //         onRightButtonPress: () => { 
+    //           this.refs.mainNavigator.navigator.pop(); }
 
     return (
       <NavigatorIOS 
@@ -50,10 +53,8 @@ var ToDoList = React.createClass({
           onRightButtonPress:() =>{
             this.refs.mainNavigator.navigator.push({
             title: "Add New Event",
-            component: ToEditItem,
-            rightButtonTitle: 'Cancel',
-            onRightButtonPress: () => { 
-              this.refs.mainNavigator.navigator.pop(); }
+            component: ToEditItem
+            
             
 
 

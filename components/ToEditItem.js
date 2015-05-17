@@ -37,13 +37,16 @@ var toEditItem = React.createClass({
 
   _updateTodo:function(){
     console.log('_updateTodo called');
-    TodoActions.createItem(this.state.input);
+    if (this.state.input !=='') {
+      TodoActions.createItem(this.state.input);
+    }
 
   },
 
 
   render:function(){
     console.log('toEditItem render');
+ 
 
     
 
@@ -54,7 +57,7 @@ var toEditItem = React.createClass({
                 style={styles.textInput} 
                 onChangeText={(text) => this._updateInputText(text)} 
                 onEndEditing={this._updateTodo}/>
-            <Text style={styles.trialText}>{'user input: ' + this.state.input}</Text>
+            <Text style={styles.inputText}>{'user input: ' + this.state.input}</Text>
             </View>
 
         

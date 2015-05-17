@@ -14,7 +14,7 @@ var Footer = React.createClass({
 		console.log('render MainView');
 		return(
 			<View style={styles.footer}>
-				<Text style={styles.footerText}>Powered By Yiqixie</Text>
+				<Text style={styles.trialText}>Powered By Yiqixie</Text>
 			</View>
 			
 			 
