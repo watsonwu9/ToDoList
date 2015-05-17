@@ -7,6 +7,10 @@
 var React = require('react-native');
 var styles = require('./styles');
 var MainViewContainer = require('./MainViewContainer');
+var Footer =require('./Footer');
+var ToEditItem = require('./ToEditItem');
+var TodoActions = require('../actions/TodoActions');
+
 
 
 var {
@@ -21,14 +25,39 @@ var {
 
 var ToDoList = React.createClass({
 
+  componentWillMount:function(){
+    console.log('index will mount');
+  },
+
+    componentWillUnMount:function(){
+    console.log('index will unmount');
+  },
+    componentDidMount:function(){
+    console.log('index did mount');
+  },
  
   render: function() {
+    console.log('index render');
+
     return (
       <NavigatorIOS 
+        ref="mainNavigator"
         style={styles.navigatorIOSWrapper}
         initialRoute={{
           component:MainViewContainer,
           title:"To Do List",
+          rightButtonTitle:'Add',
+          onRightButtonPress:() =>{
+            this.refs.mainNavigator.navigator.push({
+            title: "Add New Event",
+            component: ToEditItem,
+            rightButtonTitle: 'Cancel',
+            onRightButtonPress: () => { 
+              this.refs.mainNavigator.navigator.pop(); }
+            
+
+
+            });}
         }} />
     );
   },

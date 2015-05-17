@@ -4,6 +4,26 @@ var { StyleSheet } = React;
 
 
 var styles = StyleSheet.create({
+
+  trialText:{
+    fontSize:20,
+  },
+
+  textInput:{
+    marginTop:160,
+    height: 40, 
+    borderWidth:1,
+    backgroundColor:'#00f9ff'
+  },
+
+
+  toEditItemWrapper:{
+    backgroundColor:'#fafbfc',
+    height:60,
+    width:375,
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
  
   navigatorIOSWrapper:{
     flex:1,
@@ -37,6 +57,7 @@ var styles = StyleSheet.create({
     borderWidth:3,
     alignSelf: 'center',
     justifyContent: 'center',
+
 
   },
 

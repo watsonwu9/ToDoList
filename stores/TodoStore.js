@@ -24,12 +24,12 @@ var _todos = [
 
 
 
-function _createItem(payload){
+function _createItem(text){
     console.log('you want to create new item');
 
   //   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
     _todos.push({
-      text: 'learn react native',
+      text: text,
       complete: false
     });
 }
@@ -58,7 +58,7 @@ var TodoStore = merge(EventEmitter.prototype,{
 	  switch(action.actionType) {
 	    case TodoConstants.TODO_CREATE:
 	      console.log("actions render in TodoStore");
-	      _createItem(payload);
+	      _createItem(action.text);
 	      break;
 
 	    default:

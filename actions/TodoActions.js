@@ -5,9 +5,10 @@ var TodoConstants = require('../constants/TodoConstants');
 
 var todoActions = {
 
-	createItem:function(){
+	createItem:function(text){
 		var payload  = {
-			actionType:TodoConstants.TODO_CREATE
+			actionType:TodoConstants.TODO_CREATE,
+			text:text
 		};
 		AppDispatcher.handleViewAction(payload);
 	

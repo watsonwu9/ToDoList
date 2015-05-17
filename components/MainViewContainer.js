@@ -3,6 +3,7 @@ var styles = require('./styles');
 var TodoActions = require('../actions/TodoActions');
 var TodoStore = require('../stores/TodoStore');
 var TodoListItem = require('./TodoListItem');
+var ToEditItem = require('./ToEditItem');
 var Footer =require('./Footer');
 
 
@@ -25,20 +26,25 @@ function _getTodoState() {
 
 var TodoListContainer = React.createClass({
 
+	// _handleNextButtonPress:function(){
+	// 	this.props.navigator.pop();
+	// },
+
 	componentDidMount:function(){
+	  console.log('mainViewContainer did mount');
 	  TodoStore.addChangeListener(this._onChange);
 	},
 	componentWillUnmount:function(){
+	  console.log('mainViewContainer will unmount');
 	  TodoStore.removeChangeListener(this._onChange);
 	},
 
 	getInitialState:function(){
-	  console.log("get getInitialState");
 	  return _getTodoState();
 	},
 
 	componentWillMount: function() {
-		console.log("will mount");
+		console.log("mainViewContainer will mount");
 	    this.dataSource = new ListView.DataSource({
 	      rowHasChanged: (row1, row2) => row1 !== row2
 	    });
@@ -46,41 +52,45 @@ var TodoListContainer = React.createClass({
 
 	_AlertMenu:function(rowData,rowID){
 		//AlertIOS.alert('you opened item No.'+rowID);
+		console.log('ou opened item No.'+rowID);
 	},
 
 	_openItem:function(rowData,rowID){
-		console.log(rowData);
+        // this.props.refs.mainNavigator.navigator.push({
+        // title: "Amend Event",
+        // component: ToEditItem,
+        // passProps: {item: rowData, id: rowID},
+        // rightButtonTitle: 'Cancel',
+        // onRightButtonPress: () => {this.props.refs.mainNavigator.navigator.pop(); }
+        // });
+		console.log(this.props);
+
+
+          
 	},
 
 
 	_renderRow:function(rowData:string,sectionID:number,rowID:number){
+		//onLongPress = {this._AlertMenu(rowData,rowID)} />
 		return(
 			<TodoListItem 
-
 			 item = {rowData}
-			 onPress = {this._openItem(rowData,rowID)}
-			 onLongPress = {this._AlertMenu(rowData,rowID)} />
-			
+			 onPress = {this._openItem(rowData,rowID)}/>
+			 
 			);
 	},
 
 	_createItem:function(){
 		TodoActions.createItem();
 
-
-
-
 	},
 
 	render:function(){
+		console.log("mainViewContainer render");
 		var dataSource = this.dataSource.cloneWithRows(this.state.todos)
-		console.log("show me dataSource");
-		console.log(dataSource);
-		//contentContainerStyle={styles.listview}
 		return(
 	    	<View style={styles.mainViewContainer}>
 			 	<ListView 
-			 		
 			 		dataSource ={dataSource}
 			 		renderRow ={this._renderRow}/>
 
@@ -97,10 +107,9 @@ var TodoListContainer = React.createClass({
 	},
 
 	  _onChange:function(){
-    console.log(this.state.todos);
-    console.log('_onChange called ');
+
     this.setState(_getTodoState());
-    console.log(this.state.todos);
+    
   }
 
 

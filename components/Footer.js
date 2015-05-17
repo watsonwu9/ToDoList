@@ -1,5 +1,6 @@
 var React = require('react-native');
 var styles = require('./styles');
+var Footer =require('./Footer');
 var {
   AppRegistry,
   StyleSheet,
