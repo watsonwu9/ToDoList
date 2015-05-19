@@ -20,6 +20,12 @@ var _todos = [
         {text: 'watch a movie', complete:true}
     ];
 
+function _updateItem(text,rowId){
+  console.log('you want to update new item');
+
+  //   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+    _todos[rowId].text=text;
+}
 
 
 
@@ -57,9 +63,13 @@ var TodoStore = merge(EventEmitter.prototype,{
   	  var action = payload.action;
 	  switch(action.actionType) {
 	    case TodoConstants.TODO_CREATE:
-	      console.log("actions render in TodoStore");
+	      console.log("create actions render in TodoStore");
 	      _createItem(action.text);
 	      break;
+
+      case TodoConstants.TODO_UPDATE:
+        console.log("update actions render in TodoStore");
+        _updateItem(action.text,action.rowId);
 
 	    default:
 	    	return true;

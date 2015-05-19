@@ -4,6 +4,14 @@ var TodoConstants = require('../constants/TodoConstants');
 
 
 var todoActions = {
+	updateItem:function(text,rowId){
+		var payload ={
+			actionType:TodoConstants.TODO_UPDATE,	
+			text:text,
+			rowId:rowId
+		};
+		AppDispatcher.handleViewAction(payload);
+	},
 
 	createItem:function(text){
 		var payload  = {

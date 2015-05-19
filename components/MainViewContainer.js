@@ -26,11 +26,11 @@ function _getTodoState() {
 var TodoListContainer = React.createClass({
 
 	componentDidMount:function(){
-	  console.log('mainViewContainer did mount');
+	//  console.log('mainViewContainer did mount');
 	  TodoStore.addChangeListener(this._onChange);
 	},
 	componentWillUnmount:function(){
-	  console.log('mainViewContainer will unmount');
+	//  console.log('mainViewContainer will unmount');
 	  TodoStore.removeChangeListener(this._onChange);
 	},
 
@@ -39,7 +39,7 @@ var TodoListContainer = React.createClass({
 	},
 
 	componentWillMount: function() {
-		console.log("mainViewContainer will mount");
+	//	console.log("mainViewContainer will mount");
 	    this.dataSource = new ListView.DataSource({
 	      rowHasChanged: (row1, row2) => row1 !== row2
 	    });
@@ -51,7 +51,7 @@ var TodoListContainer = React.createClass({
 	// },
 
 	_createItem:function(){
-		console.log("this.props");
+		//console.log("this.props");
 		this.props.navigator.push({
 	    title: "Property",
 	    component: Footer
@@ -59,12 +59,12 @@ var TodoListContainer = React.createClass({
           
 	},
 
-	_PressItem:function(rowData){
-		console.log("onPressed !!!!!!!!!!!!!!"+rowData.text);
+	_PressItem:function(rowData,rowID){
+		//console.log("onPressed !!!!!!!!!!!!!!"+rowData.text);
 		 this.props.navigator.push({
 		      title: "Property",
 		      component: ToEditItem,
-		      passProps:rowData
+		      passProps:{item:rowData,rowId:rowID}
 		  });
 
 
@@ -76,7 +76,7 @@ var TodoListContainer = React.createClass({
 		console.log("the render row is "+item.text);
 		return(
 			<TouchableHighlight
-		          onPress={() => this._PressItem(rowData)}
+		          onPress={() => this._PressItem(rowData,rowID)}
 		          onLongPress={this._onLongPress}>
 		          <View style={styles.todoListItem}>
 		            <Text style={styles.todoListItemText}>
@@ -89,7 +89,7 @@ var TodoListContainer = React.createClass({
 	},
 
 	render:function(){
-		console.log("mainViewContainer render");
+		//console.log("mainViewContainer render");
 		var dataSource = this.dataSource.cloneWithRows(this.state.todos)
 		return(
 	    	<View style={styles.mainViewContainer}>

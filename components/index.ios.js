@@ -26,18 +26,18 @@ var {
 var ToDoList = React.createClass({
 
   componentWillMount:function(){
-    console.log('index will mount');
+   // console.log('index will mount');
   },
 
     componentWillUnMount:function(){
-    console.log('index will unmount');
+   // console.log('index will unmount');
   },
     componentDidMount:function(){
-    console.log('index did mount');
+   // console.log('index did mount');
   },
  
   render: function() {
-    console.log('index render');
+   // console.log('index render');
     // rightButtonTitle: 'Cancel',
     //         onRightButtonPress: () => { 
     //           this.refs.mainNavigator.navigator.pop(); }
