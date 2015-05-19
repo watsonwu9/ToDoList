@@ -23,12 +23,15 @@ var todoListItem = React.createClass({
     console.log('todoListItem did mount');
   },
 
-  _onPress:function(){
-    console.log('you pressed '+this.props.item.text);
+  _onPress:function(item){
+    console.log('you pressed '+ item.text);
     // this.props.navigator.push({
     //   title:"Edit Todo",
     //   component:Footer
     // });
+    // this.props.navigator.push({
+    //   title:
+    // })
   },
 
 
@@ -39,7 +42,7 @@ var todoListItem = React.createClass({
     var item = this.props.item;
     return (
         <TouchableHighlight
-          onPress={this._onPress}
+          onPress={this._onPress(item)}
           onLongPress={this._onLongPress}>
           <View style={styles.todoListItem}>
             <Text style={styles.todoListItemText}>

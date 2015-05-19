@@ -44,11 +44,10 @@ var toEditItem = React.createClass({
   },
 
 
-  render:function(){
-    console.log('toEditItem render');
- 
 
-    
+  render:function(){
+     console.log('toEditItem render');
+    // var item = this.props.rowData;
 
     return (
             <View style={styles.toEditItemWrapper}>

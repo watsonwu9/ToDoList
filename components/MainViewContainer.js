@@ -2,7 +2,6 @@ var React = require('react-native');
 var styles = require('./styles');
 var TodoActions = require('../actions/TodoActions');
 var TodoStore = require('../stores/TodoStore');
-var TodoListItem = require('./TodoListItem');
 var ToEditItem = require('./ToEditItem');
 var Footer =require('./Footer');
 
@@ -60,16 +59,31 @@ var TodoListContainer = React.createClass({
           
 	},
 
-	_Pressed:function(){
-		console.log("pressed !!!!!!!!!!!!!!");
+	_PressItem:function(rowData){
+		console.log("onPressed !!!!!!!!!!!!!!"+rowData.text);
+		 this.props.navigator.push({
+		      title: "Property",
+		      component: ToEditItem,
+		      passProps:rowData
+		  });
+
+
 	},
 
 
 	_renderRow:function(rowData:string,sectionID:number,rowID:number){
-		console.log("the render row is "+this);
+		var item = rowData;
+		console.log("the render row is "+item.text);
 		return(
-			<TodoListItem 
-			 item = {rowData}/>		 
+			<TouchableHighlight
+		          onPress={() => this._PressItem(rowData)}
+		          onLongPress={this._onLongPress}>
+		          <View style={styles.todoListItem}>
+		            <Text style={styles.todoListItemText}>
+		              {item.text}
+		            </Text>
+		          </View>
+        	</TouchableHighlight>	 
 			
 			);
 	},
