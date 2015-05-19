@@ -38,18 +38,26 @@ var toEditItem = React.createClass({
 
 
 
-  _updateTodo:function(){
+  _updateTodo:function(text){
+     this.setState({input:text});
+
+     //if nothing was input, keep the original 
+     if (this.state.input == '') {
+      return;
+     };
+
     if (this.props.item) {
       console.log('lets update the item at Row '+this.props.rowId);
       TodoActions.updateItem(this.state.input,this.props.rowId);
+      return;
     }
-    else{
+
+    if (this.state.input!='') {
       console.log('&&&&&&&'+this.state.input);
       TodoActions.createItem(this.state.input);
-
-
-    }
-
+      return;
+    };
+    
   },
 
 
@@ -64,7 +72,7 @@ var toEditItem = React.createClass({
                 value={item&&item.text?item.text:''}
                 style={styles.textInput} 
                 onChangeText={(text) => this._updateInputText(text)} 
-                onEndEditing={this._updateTodo}/>
+                onEndEditing={(text) => this._updateTodo(text)}/>
             </View>      
            );
   }

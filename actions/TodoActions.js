@@ -22,6 +22,14 @@ var todoActions = {
 	
 	},
 
+	deleteItem:function(rowId){
+		var payload = {
+			actionType:TodoConstants.TODO_DELETE,
+			rowId:rowId
+		};
+		AppDispatcher.handleViewAction(payload);
+	}
+
 };
 
 module.exports = todoActions;

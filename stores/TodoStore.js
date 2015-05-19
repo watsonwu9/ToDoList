@@ -40,6 +40,12 @@ function _createItem(text){
     });
 }
 
+function _deleteItem(rowId){
+  console.log('you want to delete '+rowId);
+  _todos.splice(rowId,1);
+
+}
+
 
 
 var TodoStore = merge(EventEmitter.prototype,{
@@ -70,6 +76,11 @@ var TodoStore = merge(EventEmitter.prototype,{
       case TodoConstants.TODO_UPDATE:
         console.log("update actions render in TodoStore");
         _updateItem(action.text,action.rowId);
+        break;
+        
+      case TodoConstants.TODO_DELETE:
+        _deleteItem(action.rowId);
+        break;
 
 	    default:
 	    	return true;

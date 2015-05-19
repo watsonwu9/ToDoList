@@ -12,8 +12,9 @@
 var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
-  TODO_SHOW:'TODO_SHOW',
+  TODO_DELETE:'TODO_DELETE',
   TODO_CREATE: 'TODO_CREATE',
+  TODO_UPDATE:'TODO_UPDATE',
   TODO_COMPLETE: null,
   TODO_DESTROY: null,
   TODO_DESTROY_COMPLETED: null,

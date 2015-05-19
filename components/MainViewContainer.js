@@ -45,38 +45,41 @@ var TodoListContainer = React.createClass({
 	    });
 	  },
 
-	// _AlertMenu:function(rowData,rowID){
-	// 	//AlertIOS.alert('you opened item No.'+rowID);
-	// 	console.log('ou opened item No.'+rowID);
-	// },
+	 _onLongPress: function(rowData, rowId) {
+	    AlertIOS.alert(
+	      'Delete?',
+	      null,
+	      [
+	        {text: 'Delete', onPress: () => this._deleteItem(rowId)},
+	        {text: 'Cancel'},
+	      ]
+	    )
+ 	 },
 
-	_createItem:function(){
-		//console.log("this.props");
-		this.props.navigator.push({
-	    title: "Property",
-	    component: Footer
-	    });
-          
-	},
+ 	 _deleteItem:function(rowId){
+ 	 	TodoActions.deleteItem(rowId);
+ 	 },
 
-	_PressItem:function(rowData,rowID){
+
+
+	_openItem:function(rowData,rowId){
 		//console.log("onPressed !!!!!!!!!!!!!!"+rowData.text);
 		 this.props.navigator.push({
-		      title: "Property",
+		      title: "Edit Todo",
 		      component: ToEditItem,
-		      passProps:{item:rowData,rowId:rowID}
+		      passProps:{item:rowData,rowId:rowId}
 		  });
 
 
 	},
 
 
-	_renderRow:function(rowData:string,sectionID:number,rowID:number){
+	_renderRow:function(rowData:string,sectionId:number,rowId:number){
 		var item = rowData;
 		console.log("the render row is "+item.text);
 		return(
 			<TouchableHighlight
-		          onPress={() => this._PressItem(rowData,rowID)}
+		          onPress={() => this._openItem(rowData,rowId)}
 		          onLongPress={this._onLongPress}>
 		          <View style={styles.todoListItem}>
 		            <Text style={styles.todoListItemText}>
@@ -96,11 +99,6 @@ var TodoListContainer = React.createClass({
 			 	<ListView 
 			 		dataSource ={dataSource}
 			 		renderRow ={this._renderRow}/>
-			 	<TouchableHighlight
-	          style={styles.button}
-	          onPress={this._createItem}>
-	            <Text style={styles.buttonText}>+</Text>
-	            </TouchableHighlight>
 	    	 <Footer />
 	       </View>
 	       
