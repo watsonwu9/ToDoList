@@ -13,6 +13,12 @@ var styles = StyleSheet.create({
     fontSize:40,
   },
 
+  switchIOS:{
+    marginBottom: 10,
+
+
+  },
+
 
   textInput:{
     marginTop:160,
@@ -23,6 +29,7 @@ var styles = StyleSheet.create({
 
 
   toEditItemWrapper:{
+    flex:1,
     backgroundColor:'#fafbfc',
     height:60,
     width:375,

@@ -25,6 +25,7 @@ function _updateItem(text,rowId){
 
   //   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
     _todos[rowId].text=text;
+    
 }
 
 
@@ -44,6 +45,11 @@ function _deleteItem(rowId){
   console.log('you want to delete '+rowId);
   _todos.splice(rowId,1);
 
+}
+
+function _switchItem(rowId){
+  var current = _todos[rowId].complete;
+  _todos[rowId].complete = !current;
 }
 
 
@@ -77,9 +83,13 @@ var TodoStore = merge(EventEmitter.prototype,{
         console.log("update actions render in TodoStore");
         _updateItem(action.text,action.rowId);
         break;
-        
+
       case TodoConstants.TODO_DELETE:
         _deleteItem(action.rowId);
+        break;
+
+      case TodoConstants.TODO_SWITCH:
+        _switchItem(action.rowId);
         break;
 
 	    default:
