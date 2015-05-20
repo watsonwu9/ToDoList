@@ -30,7 +30,7 @@ var todoActions = {
 		AppDispatcher.handleViewAction(payload);
 	},
 
-	switchItem:function(){
+	switchItem:function(rowId){
 		var payload ={
 			actionType:TodoConstants.TODO_SWITCH,
 			rowId:rowId

@@ -19,7 +19,7 @@ var toEditItem = React.createClass({
   getInitialState:function(){
     return{
       input: '',
-      complete:false,
+      complete:this.props.item.complete,
       };
   },
 
@@ -64,9 +64,11 @@ var toEditItem = React.createClass({
     };
     
   },
-  _switchTodo:function(value){
+  _switchTodo:function(){
     console.log('switchIOS touch');
-    TodoActions.switchItem();
+    var current = this.state.complete;
+    this.setState({complete:!current});
+    TodoActions.switchItem(this.props.rowId);
 
   },
 
@@ -79,7 +81,7 @@ var toEditItem = React.createClass({
 
   render:function(){
      var item = this.props.item;
-     var rowId = this.props.rowId;
+     //var rowId = this.props.rowId;
      var placeholder = 'go swimming';
     return (
             <View style={styles.toEditItemWrapper}>
@@ -91,7 +93,7 @@ var toEditItem = React.createClass({
                 onEndEditing={(text) => this._updateTodo(text)}/>
               <SwitchIOS
                 style={styles.switchIOS}
-                onValueChange={() => this._switchTodo({rowId})}
+                onValueChange={() => this._switchTodo()}
                 value={this.state.complete} />
 
             </View>      
