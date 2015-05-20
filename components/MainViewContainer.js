@@ -65,7 +65,7 @@ var TodoListContainer = React.createClass({
 	_openItem:function(rowData,rowId){
 		//console.log("onPressed !!!!!!!!!!!!!!"+rowData.text);
 		 this.props.navigator.push({
-		      title: "Edit Todo",
+		      title: "Edit Event",
 		      component: ToEditItem,
 		      passProps:{item:rowData,rowId:rowId}
 		  });
