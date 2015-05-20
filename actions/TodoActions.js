@@ -28,14 +28,6 @@ var todoActions = {
 			rowId:rowId
 		};
 		AppDispatcher.handleViewAction(payload);
-	},
-
-	switchItem:function(){
-		var payload ={
-			actionType:TodoConstants.TODO_SWITCH,
-			rowId:rowId
-		};
-		AppDispatcher.handleViewAction(payload);
 	}
 
 };

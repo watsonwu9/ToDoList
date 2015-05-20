@@ -3,13 +3,11 @@
 var React = require('react-native');
 var styles = require('./styles');
 var TodoActions = require('../actions/TodoActions');
-var TodoStore = require('../stores/TodoStore');
 var {
 	Text,
 	View,
 	TouchableHighlight,
-  TextInput,
-  SwitchIOS,
+  TextInput
 }= React;
 
 
@@ -18,18 +16,15 @@ var {
 var toEditItem = React.createClass({
   getInitialState:function(){
     return{
-      input: '',
-      complete:false,
+      input: ''
       };
   },
 
    componentWillMount:function(){
-     TodoStore.addChangeListener(this._onChange);
     //console.log('toEditItem will mount');
   },
 
     componentWillUnMount:function(){
-     TodoStore.removeChangeListener(this._onChange);
    // console.log('toEditItem will unmount');
   },
     componentDidMount:function(){
@@ -64,22 +59,11 @@ var toEditItem = React.createClass({
     };
     
   },
-  _switchTodo:function(value){
-    console.log('switchIOS touch');
-    TodoActions.switchItem();
 
-  },
 
-  _onChange:function(){
-    console.log('you change the complete status');
-
-   // this.setState({complete:this.props.item.complete});
-
- },
 
   render:function(){
      var item = this.props.item;
-     var rowId = this.props.rowId;
      var placeholder = 'go swimming';
     return (
             <View style={styles.toEditItemWrapper}>
@@ -89,11 +73,6 @@ var toEditItem = React.createClass({
                 style={styles.textInput} 
                 onChangeText={(text) => this._updateInputText(text)} 
                 onEndEditing={(text) => this._updateTodo(text)}/>
-              <SwitchIOS
-                style={styles.switchIOS}
-                onValueChange={() => this._switchTodo({rowId})}
-                value={this.state.complete} />
-
             </View>      
            );
   }
