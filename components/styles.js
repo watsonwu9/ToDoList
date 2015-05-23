@@ -29,26 +29,27 @@ var styles = StyleSheet.create({
     },
 
 
-   todoListItemContainer:{
+  todoListItemContainer:{
 	backgroundColor:'#fafbfc',
 	height:66,
 	borderColor:'#7fccff',//blue
 	borderWidth:2,
 	flexDirection:'row',
-	justifyContent: 'flex-start',
+	justifyContent: 'space-between',
    },
 
 
 
    touchableHighlight:{
-    flex:9,
+    flex:14,
     alignSelf:'center',
    },
 
   checkbox:{
     flex:1,
-    textAlign:'center',
+    textAlign:'right',
     alignSelf:'center',
+    marginRight:20,
 
   },
 

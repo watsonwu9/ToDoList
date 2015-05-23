@@ -14,6 +14,7 @@ var {
   ListView,
   TouchableHighlight,
   AlertIOS,
+  TouchableOpacity,
 } = React;
 
 function _getTodoState() {
@@ -84,14 +85,14 @@ var TodoListContainer = React.createClass({
 		};
 		return(
 			<View style={styles.todoListItemContainer}>
-				<TouchableHighlight
+				<TouchableOpacity
 					  style={styles.touchableHighlight}
 			          onPress={() => this._openItem(rowData,rowId)}
 			          onLongPress={this._onLongPress}>
 			            <Text style={styles.todoListItemText}>
 			              {item.text}
 			            </Text>   
-	        	</TouchableHighlight>
+	        	</TouchableOpacity>
 	          	<Text style={styles.checkbox}>
 	          	  {sign}
 	          	</Text>
