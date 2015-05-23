@@ -5,108 +5,89 @@ var { StyleSheet } = React;
 
 var styles = StyleSheet.create({
 
-  trialText:{
-    fontSize:120,
+  navigatorIOSContainer:{
+  	flex:1,
   },
 
-  inputText:{
-    fontSize:40,
-  },
-
-  switchIOS:{
-    marginBottom: 10,
-
-
-  },
-
-
-  textInput:{
-    marginTop:160,
-    height: 40, 
-    borderWidth:1,
-    backgroundColor:'#00f9ff'
-  },
-
-
-  toEditItemWrapper:{
+   mainViewContainer:{
     flex:1,
-    backgroundColor:'#fafbfc',
-    height:60,
-    width:375,
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
- 
-  navigatorIOSWrapper:{
-    flex:1,
+    backgroundColor:'#7fccff',//blue
   },
 
-  mainViewContainer:{
-    justifyContent:'space-between',
-    height:677,
+   footer:{
+    backgroundColor:'#003d66',
+    alignSelf:'stretch',
+    height:15,
+    
   },
 
-  
-  footer:{
-    backgroundColor:'#d3d8e3',
-    alignSelf:'center',
-    height:25,
-    width:375,
-
-  },
-
-  footerText:{
+   footerText:{
     fontSize: 12,
     textAlign:'center',
-  },
-  
+    color:'#ffffff',
 
-  todoListItem:{
-    backgroundColor:'#fafbfc',
-    height:60,
-    width:375,
-    borderColor:'#48BBEC',
-    borderWidth:3,
-    alignSelf: 'center',
-    justifyContent: 'center',
+    },
 
 
-  },
-
-   todoListItemText:{
-    textAlign:'center',
-    fontSize:18,
-    fontFamily:'georgia',
-
+   todoListItemContainer:{
+	backgroundColor:'#fafbfc',
+	height:66,
+	borderColor:'#7fccff',//blue
+	borderWidth:2,
+	flexDirection:'row',
+	justifyContent: 'flex-start',
    },
 
-   button: {
-    height: 35,
-    width:50,
-    backgroundColor: '#48BBEC',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    padding:10,
-  },
-
-   buttonText: {
-    fontSize: 25,
-    color: 'white',
-    alignSelf: 'center'
-  },
 
 
+   touchableHighlight:{
+    flex:9,
+    alignSelf:'center',
+   },
 
-  text: {
-    flex: 1,
-  },
-
-  titleText: {
-    fontSize: 20,
+  checkbox:{
+    flex:1,
     textAlign:'center',
-    fontWeight: 'bold',
+    alignSelf:'center',
+
   },
-});
+
+
+   todoListItemText:{
+    textAlign:'left',
+    fontSize:18,
+    fontFamily:'georgia',
+    padding:20,
+  },
+
+
+
+  toEditItemContainer:{
+    flex:1,
+    backgroundColor:'#ffffff',
+    justifyContent:'flex-start',
+   // alignItems:'center',
+  },
+
+  textInput:{
+    marginTop:100,
+    height: 40, 
+    width:300,
+    marginLeft:40,
+    borderWidth:2,
+    borderRadius:5,
+    borderColor:'#7fccff',
+    padding:5,
+    //backgroundColor:'#7fccff',
+    
+  },
+
+   switchIOS:{
+   	marginLeft:40,
+    marginTop: 20,
+  },
+
+
+ });
 
 module.exports = styles;

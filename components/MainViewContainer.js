@@ -76,17 +76,26 @@ var TodoListContainer = React.createClass({
 
 	_renderRow:function(rowData:string,sectionId:number,rowId:number){
 		var item = rowData;
+		var sign = '';
 		console.log("the render row is "+item.text);
+		console.log("the complete is " +item.complete)
+		if (item.complete) {
+			sign = "√"; 
+		};
 		return(
-			<TouchableHighlight
-		          onPress={() => this._openItem(rowData,rowId)}
-		          onLongPress={this._onLongPress}>
-		          <View style={styles.todoListItem}>
-		            <Text style={styles.todoListItemText}>
-		              {item.text}
-		            </Text>
-		          </View>
-        	</TouchableHighlight>	 
+			<View style={styles.todoListItemContainer}>
+				<TouchableHighlight
+					  style={styles.touchableHighlight}
+			          onPress={() => this._openItem(rowData,rowId)}
+			          onLongPress={this._onLongPress}>
+			            <Text style={styles.todoListItemText}>
+			              {item.text}
+			            </Text>   
+	        	</TouchableHighlight>
+	          	<Text style={styles.checkbox}>
+	          	  {sign}
+	          	</Text>
+	        </View>
 			
 			);
 	},

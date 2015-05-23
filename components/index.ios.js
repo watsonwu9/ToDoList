@@ -45,7 +45,7 @@ var ToDoList = React.createClass({
     return (
       <NavigatorIOS 
         ref="mainNavigator"
-        style={styles.navigatorIOSWrapper}
+        style={styles.navigatorIOSContainer}
         initialRoute={{
           component:MainViewContainer,
           title:"To Do List",

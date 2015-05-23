@@ -19,29 +19,26 @@ var toEditItem = React.createClass({
   getInitialState:function(){
     return{
       input: '',
-      complete:this.props.item.complete,
+      complete:this.props.item?this.props.item.complete:false,
       };
   },
 
    componentWillMount:function(){
-     TodoStore.addChangeListener(this._onChange);
-    //console.log('toEditItem will mount');
+
   },
 
     componentWillUnMount:function(){
-     TodoStore.removeChangeListener(this._onChange);
-   // console.log('toEditItem will unmount');
+
   },
     componentDidMount:function(){
     //console.log('toEditItem did mount');
   },
+
   _updateInputText:function(text){
 
     this.setState({input:text});
     console.log('you input new things');
   },
-
-
 
   _updateTodo:function(text){
      this.setState({input:text});
@@ -72,19 +69,16 @@ var toEditItem = React.createClass({
 
   },
 
-  _onChange:function(){
-    console.log('you change the complete status');
+  // this.setState({complete:this.props.item.complete});
 
-   // this.setState({complete:this.props.item.complete});
-
- },
+ 
 
   render:function(){
      var item = this.props.item;
      //var rowId = this.props.rowId;
      var placeholder = 'go swimming';
     return (
-            <View style={styles.toEditItemWrapper}>
+            <View style={styles.toEditItemContainer}>
               <TextInput
                 placeholder={placeholder}
                 value={item&&item.text?item.text:''}
@@ -93,6 +87,7 @@ var toEditItem = React.createClass({
                 onEndEditing={(text) => this._updateTodo(text)}/>
               <SwitchIOS
                 style={styles.switchIOS}
+                onTintColor='#7fccff'
                 onValueChange={() => this._switchTodo()}
                 value={this.state.complete} />
 

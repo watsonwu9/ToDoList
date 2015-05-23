@@ -16,8 +16,8 @@ var EventEmitter = require('events').EventEmitter;
 var merge = require('react/lib/merge');
 var CHANGE_EVENT = "change";
 var _todos = [
-        {text: 'buy some milk', complete:false},
-        {text: 'watch a movie', complete:true}
+        {text: 'buy some milk', complete:true},
+        {text: 'watch a movie', complete:false}
     ];
 
 function _updateItem(text,rowId){
